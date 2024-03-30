@@ -1,18 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+import { 
+  homeContainer,
+  homeTitle,
+  homeButton
+} from './animation/Home'
+
+const ease = [0.62, 0.05, 0.01, 0.98];
 
 const Home = () => {
   return (
-    <div className="home container">
-      <h2>
+    <motion.div 
+      className="home container"
+      variants={homeContainer}
+      exit="exit"
+    >
+      <motion.h2
+        initial    = { homeTitle.initial }
+        animate    = { homeTitle.end }
+        transition = { homeTitle.transition }
+      >
         Welcome to Pizza Joint
-      </h2>
+      </motion.h2>
       <Link to="/base">
-        <button>
+        <motion.button
+          initial    = { homeButton.initial }
+          animate    = { homeButton.end }
+          transition = { homeButton.transition }
+          whileHover = { homeButton.hover }
+        >
           Create Your Pizza
-        </button>
+        </motion.button>
       </Link>
-    </div>
+    </motion.div>
   )
 }
 
